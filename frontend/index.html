@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MicroMatch - Puzzle Duel</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <script src="linera-client.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>MicroMatch 🔥</h1>
+            <div class="player-info">
+                <div id="player-name">Not Connected</div>
+                <div id="player-stats">Wins: 0 | Losses: 0</div>
+            </div>
+        </header>
+
+        <div id="game-states">
+            <!-- Registration State -->
+            <div id="registration" class="game-state">
+                <h2>Welcome to MicroMatch!</h2>
+                <input type="text" id="player-name-input" placeholder="Enter your name" maxlength="20"/>
+                <button id="register-btn">Start Playing</button>
+            </div>
+
+            <!-- Matchmaking State -->
+            <div id="matchmaking" class="game-state hidden">
+                <h2>Finding Opponent...</h2>
+                <div class="loading-spinner"></div>
+                <div id="queue-info">Players in queue: <span id="queue-count">0</span></div>
+                <button id="cancel-matchmaking">Cancel</button>
+            </div>
+
+            <!-- Game State -->
+            <div id="game" class="game-state hidden">
+                <div class="game-header">
+                    <div class="player-score">
+                        <span id="player1-name">You</span>
+                        <span id="player1-score">0</span>
+                    </div>
+                    <div class="vs">VS</div>
+                    <div class="player-score">
+                        <span id="player2-name">Opponent</span>
+                        <span id="player2-score">0</span>
+                    </div>
+                </div>
+
+                <div class="puzzle-area">
+                    <div class="puzzle-info">
+                        <span id="puzzle-number">Puzzle 1/10</span>
+                        <span id="puzzle-difficulty">Difficulty: Easy</span>
+                    </div>
+                    <p id="question">Loading puzzle...</p>
+                    <input type="text" id="answer" placeholder="Your answer"/>
+                    <button id="submit-btn">Submit</button>
+                </div>
+
+                <div class="game-timer">
+                    <div class="timer-bar"></div>
+                </div>
+            </div>
+
+            <!-- Results State -->
+            <div id="results" class="game-state hidden">
+                <h2 id="result-title">Game Over!</h2>
+                <div id="final-scores">
+                    <div class="final-score">
+                        <span id="final-player1-name">You</span>
+                        <span id="final-player1-score">0</span>
+                    </div>
+                    <div class="final-score">
+                        <span id="final-player2-name">Opponent</span>
+                        <span id="final-player2-score">0</span>
+                    </div>
+                </div>
+                <div id="result-message"></div>
+                <button id="play-again-btn">Play Again</button>
+            </div>
+        </div>
+
+        <div class="leaderboard">
+            <h3>Leaderboard</h3>
+            <div id="leaderboard-list"></div>
+        </div>
+
+        <!-- Loading Indicator -->
+        <div id="loading-indicator" class="loading-spinner hidden"></div>
+
+        <!-- Error Message -->
+        <div id="error-message" class="error-message hidden"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
